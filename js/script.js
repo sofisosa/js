@@ -1,63 +1,63 @@
 /* uso de for */
 
-let contrasena= 'blue';
+let contrasena = 'blue';
 
 
-for(i=3; i>=1; i--){
-    let usuario= prompt('ingresa tu contrasena, tienes ' +i+ ' oportunidades');
-    if(usuario==contrasena){
+for (i = 3; i >= 1; i--) {
+    let usuario = prompt('ingresa tu contrasena, tienes ' + i + ' oportunidades');
+    if (usuario == contrasena) {
         alert('contrasena correcta, puedes ingresar')
+        /* uso de switch */
+        let jeans = 5000;
+        let buzos = 4000;
+        let remeras = 3000;
+
+        let productos = prompt('Bienvenido a nuestra tienda, selecciona el numero del producto que deseas comprar \n1-jeans \n2-buzos \n3-remeras ');
+
+        switch (productos) {
+            case '1': alert('Elegiste comprar jeans! Su precio es de ' + jeans + '.')
+                break;
+
+            case '2': alert('Elegiste comprar buzos! Su precio es de ' + buzos + '.')
+                break;
+
+            case '3': alert('Elegiste comprar remeras! Su precio es de ' + remeras + '.')
+                break;
+
+            default: alert("Seleccionaste una opcion NO valida")
+                break;
+        }
+
+        let MetodoPago = prompt('Como quieres abonar? Selecciona una de las siguientes opciones \n1- Mercado pago: Tienes un 10% de recargo \n2- Efectivo: Tienes un 15% de descuento \n3- Tarjeta de debito o credito (sin ningun recargo) ')
+
+
+        const MercadoPago = (x) => x * 1.10;
+        const Efectivo = (x) => x - (x * 0.15);
+
+        let PrecioProducto = prompt('Ingresa el precio del producto que seleccionaste anteriormente');
+
+        switch (MetodoPago) {
+
+            case '1':
+                alert('El precio final es de ' + MercadoPago(PrecioProducto));
+                break;
+
+            case '2':
+                alert('El precio final es de ' + Efectivo(PrecioProducto));
+                break;
+            case '3':
+                alert('El precio final es de ' + PrecioProducto)
+                break;
+            default: alert('Seleccionaste una opcion NO valida')
+                break;
+        }
+
+
         break
+    }
+    else {
+        alert('Contrasena incorrecta, no puedes ingresar')
     }
 }
 
-/* uso de if */
-
-let edadUsuario= parseInt(prompt('Para poder comprar en nuestra tienda, debes ingresar tu edad'));
-let edadPermitida= 18;
-let edadAutorizacion= 16;
-
-if(edadUsuario>=edadPermitida){
-    alert('Bienvenido/a a nuestra tienda, puedes comprar nuestros productos');
-}
-else if(edadUsuario>=edadAutorizacion){
-    alert('Unicamente podras comprar en nuestra tienda con la autorizacion de un adulto');
-}
-else{
-    alert('No puedes comprar en nuestra tienda.');
-}
-
-/* uso de while */
- let palabra='casa';
-let palabraUsuario= prompt('Ingresa la palabra "casa" para saber que eres tu ');
-
-while( palabraUsuario!= palabra){
-    alert('Ingresaste la palabra INOCORRECTA');
-    palabraUsuario= prompt('Ingresa la palabra "casa" para saber que eres tu ');
-} 
-alert('Ingresaste la palabra correcta!')
-
-/* uso de switch */
-
-let productos= prompt('Bienvenido a nuestra tienda, selecciona el numero del producto que deseas comprar \n1-jeans \n2-buzos \n3-remeras \n4-zapatillas \n5-joggings ');
-
-switch (productos) {
-    case '1': alert('Elegiste comprar jeans!')
-        
-        break;
-        case '2': alert('Elegiste comprar buzos!')
-        
-        break;
-        case '3': alert('Elegiste comprar remeras!')
-        
-        break;
-        case '4': alert('Elegiste comprar zapatillas!')
-        
-        break;
-        case '1': alert('Elegiste comprar joggings!')
-        
-        break;
-    default: alert("Seleccionaste una opcion NO valida")
-        break;
-}
-
+alert('Fin del proceso')
