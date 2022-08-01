@@ -10,7 +10,7 @@ let carrito = [
 //uso de metodo REDUCE
 const total1 = carrito.reduce((ac, el) => ac + el.precio, 0);
 //uso metodo MAP
-let ProductosCarrito= carrito.map(el=>el.producto);
+let ProductosCarrito = carrito.map(el => el.producto);
 
 let SeguirComprando = prompt('Tu carrito actual esta compuesto por: ' + ProductosCarrito.join('-') + ' .\n Hasta ahora el precio final es de $' + total1 + '. Deseas seguir comprando?. \n 1- si \n 2-no ');
 
@@ -20,6 +20,18 @@ if (SeguirComprando == '1') {
     for (i = 3; i >= 1; i--) {
         let usuario = prompt('Para poder seguir con tu compra, deberas ingresar tu contrasena, tienes ' + i + ' oportunidades');
         if (usuario == contrasena) {
+            //agrego texto una vez que el usuario ingresa
+            let productosCargados = document.getElementById('productos');
+            productosCargados.innerText = `tu carrito esta compuesto por ${ProductosCarrito}.`
+            productosCargados.className = "Texto" //agregando css
+            // agrego texto si el usuario ingresa correctamente la contrasena (innertext)
+            let Bienvenido = document.getElementById('bienvenido');
+            Bienvenido.innerText = 'Bienvenida Sofia';
+            Bienvenido.className = 'UsuarioSofia'; //agrego css
+            //modifico css del titulo principal
+            let Titulo = document.getElementsByClassName('TituloPrincipal');
+            Titulo.className = 'UsuarioSofia'
+
             alert('contrasena correcta, puedes ingresar')
             /* uso de switch, seleccion del producto*/
             let jeans = 5000;
@@ -30,15 +42,18 @@ if (SeguirComprando == '1') {
             //push de elementos en el array "ProductosCarrito", dependiendo el producto que haya seleccionado
             switch (productos) {
                 case '1': alert('Elegiste comprar jeans! Su precio es de $' + jeans + '.')
-                    ProductosCarrito.push('jeans')
-                    break;
+                    ProductosCarrito.push('jeans');
+                    productosCargados.innerText = `Ahora tu carrito esta compuesto por ${ProductosCarrito}.`
+                    break; //agrego un texto en html con el carrito actualizado
 
                 case '2': alert('Elegiste comprar buzos! Su precio es de $' + buzos + '.')
-                    ProductosCarrito.push('buzo')
+                    ProductosCarrito.push('buzo');
+                    productosCargados.innerText = `Ahora tu carrito esta compuesto por ${ProductosCarrito}.`
                     break;
 
                 case '3': alert('Elegiste comprar remeras! Su precio es de $' + remeras + '.')
-                    ProductosCarrito.push('remera')
+                    ProductosCarrito.push('remera');
+                    productosCargados.innerText = `Ahora tu carrito esta compuesto por ${ProductosCarrito}.`
                     break;
 
                 default: alert("Seleccionaste una opcion NO valida");
@@ -46,15 +61,15 @@ if (SeguirComprando == '1') {
 
             }
             let PrecioProducto = parseInt(prompt('Ingresa el precio del producto que seleccionaste anteriormente'));
-    
-      let AsegurarCarrito= prompt('Queres asegurarte de tener todos los productos cargados en el carrito? \n Escribe el nombre del producto y te diremos si esta cargado (TRUE), o si no lo esta (FALSE)');
-/////uso de metodo SOME
-      alert(ProductosCarrito.some((el)=>el==AsegurarCarrito));
+
+            /*       let AsegurarCarrito = prompt('Queres asegurarte de tener todos los productos cargados en el carrito? \n Escribe el nombre del producto y te diremos si esta cargado (TRUE), o si no lo esta (FALSE)');
+                  /////uso de metodo SOME
+                  alert(ProductosCarrito.some((el) => el == AsegurarCarrito));
+       */
+
+            let ConfirmarCarrito = alert('En tu carrito estan cargados los siguientes productos: \n ' + ProductosCarrito.join(' \n ') + '. \n El total, con tu nueva compra, quedaria en ' + (total1 + PrecioProducto) + '.')
 
 
-            let ConfirmarCarrito = alert('En tu carrito estan cargados los siguientes productos: \n ' + ProductosCarrito.join(' \n ') + '. \n El total, con tu nueva compra, quedaria en ' + (total1+PrecioProducto) +'.')
-
-          
             //elegir el metodo para pagar
             let MetodoPago = prompt('Como quieres abonar? Selecciona una de las siguientes opciones \n1- Mercado pago: Tienes un 10% de recargo \n2- Efectivo: Tienes un 15% de descuento \n3- Tarjeta de debito o credito (sin ningun recargo) ')
 
@@ -63,30 +78,41 @@ if (SeguirComprando == '1') {
             const MercadoPago = (x) => { return (x + total1) * 1.10 };
             const Efectivo = (x) => ((x + total1) - ((x + total1) * 0.15));
             const Tarjeta = (x) => total1 + x;
-
+            //llamo a elementos el html para luego agregar texto
+            let Pago = document.getElementById('PagoFinal');
+            Pago.className = "Texto" //agrego css
             switch (MetodoPago) {
 
                 case '1':
                     alert('El precio final es de ' + Math.trunc(MercadoPago(PrecioProducto)))  //uso del math
+                    Pago.innerText = `Decidiste abonar con Mercado Pago, el precio final es de $ ${Math.trunc(MercadoPago(PrecioProducto))}` //dependiendo el metodo de pago que elija, se le agregara un texto
                     break;
 
                 case '2':
                     alert('El precio final es de ' + Math.trunc(Efectivo(PrecioProducto)))
+                    Pago.innerText = `Decidiste abonar en Efectivo, el precio final es de $ ${Math.trunc(Efectivo(PrecioProducto))}`
                     break;
 
                 case '3':
-                    alert('El precio final es de ' + Math.trunc(Tarjeta(PrecioProducto)))
+                    alert('El precio final es de ' + Math.trunc(Tarjeta(PrecioProducto)));
+                    Pago.innerText = `Decidiste abonar con Tarjeta, el precio final es de $ ${Math.trunc(Tarjeta(PrecioProducto))}`
                     break;
 
                 default: alert('Seleccionaste una opcion NO valida')
                     break;
 
             }
-          
-         let DireccionUsuario= prompt('Gracias por su compra! Por ultimo, ingrese su direccion para poder realizar el envio de sus productos');
-           //uso de DATE
-            let DiaDelEnvio= new Date(2022, 7, 18, 14,30);
-            alert('Tus productos llegaran el dia ' +DiaDelEnvio.getDate()+'-' + DiaDelEnvio.getMonth()+ '-'+ DiaDelEnvio.getFullYear()+ ' a la siguiente direccion: '+ DireccionUsuario)
+
+            /* 
+                        let DireccionUsuario = prompt('Gracias por su compra! Por ultimo, ingrese su direccion para poder realizar el envio de sus productos');
+                        //uso de DATE
+                        let DiaDelEnvio = new Date(2022, 7, 18, 14, 30);
+                        alert('Tus productos llegaran el dia ' + DiaDelEnvio.getDate() + '-' + DiaDelEnvio.getMonth() + '-' + DiaDelEnvio.getFullYear() + ' a la siguiente direccion: ' + DireccionUsuario) */
+
+            //usando INNERHTML.
+            let Agradecimiento = document.getElementById('agradecimiento');
+            Agradecimiento.innerHTML = "<h3> Gracias por tu compra! </h3>";
+            Agradecimiento.className = 'UsuarioSofia'
             break;
         }
 
