@@ -1,21 +1,36 @@
-body{
-    background-color: lightgoldenrodyellow;
+#productos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-h1{
-    background-color: yellow;
+.card-img-top{
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+}
+.card{
+    padding: 8px;
+}
+.form-control{
+    width: 400px;
+}
+.col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Titulos{
+    text-align: center;
+    padding: 15px;
+}
+#TituloPrincipal{
+    font-size: 50px;
+    margin: 15px;
     font-weight: bold;
-    font-size: 60px;
-    text-align: center;
-}
 
-.UsuarioSofia{
-    background-color: pink;
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
 }
-.Texto{
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-    font-size: 25px;
+.categoria{
+    margin: 10px;
+    margin-left: 15px;
+    text-decoration:underline;
 }
