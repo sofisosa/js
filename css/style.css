@@ -1,36 +1,83 @@
-#productos{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.card-img-top{
-    object-fit: cover;
-    width: 300px;
-    height: 300px;
-}
-.card{
-    padding: 8px;
-}
-.form-control{
-    width: 400px;
-}
-.col{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.Titulos{
-    text-align: center;
-    padding: 15px;
-}
-#TituloPrincipal{
-    font-size: 50px;
+* {
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+  body {
+    background-color: rgb(5, 5, 5);
+  }
+  
+  .bg-dark {
+    background-color: #000000 !important;
+  }
+  .btn-light {
     margin: 15px;
+  }
+  .class-a {
+    color: white;
+    font-size: 20px;
     font-weight: bold;
-
-}
-.categoria{
-    margin: 10px;
     margin-left: 15px;
-    text-decoration:underline;
-}
+    margin-right: 10px;
+  }
+  
+  .logo-studio {
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+    object-fit: cover;
+    padding: 10px;
+    margin-top: 0;
+  }
+  .titulo-index {
+    font-size: 50px;
+    color: aliceblue;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: bold;
+    text-align: center;
+  }
+  .subtitulo-index {
+    text-align: center;
+    color: aliceblue;
+    font-size: 20px;
+  }
+  .ContainerClases {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .tituloClases {
+    color: white;
+    margin-left: 15px;
+    padding: 10px;
+  }
+  .img-card {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  .card-clases {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  footer {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin-top: 15px;
+  }
+  
+  .img-footer {
+    width: 50px;
+    height: 50px;
+  }
+  .texto-footer {
+    margin-top: 20px;
+    color: white;
+  }
+  
