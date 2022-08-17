@@ -125,12 +125,35 @@ function borrarDatos() {
 }
 ////llamar eventos
 btnInicioSesion.addEventListener('click', () => {
-  if (btnRecordarme.checked) {
+  clases.forEach(clase => {
+    const div = document.createElement('div')
+    div.innerHTML += `<div class="card card-clases" style="width: 18rem;">
+    <img ${clase.img} class="card-img-top img-card" alt="...">
+    <div class="card-body">
+    <h4 class="card-title"> ${clase.disciplina}</h4>
+    <h4 > ${clase.profe}</h4>
+    <h5 class="card-subtitle mb-2 text-muted">  ${clase.horario}</h5>
+    <h6 class="card-title"> PACK MES $${clase.precio}</h6>
+    <p class="card-text">${clase.descripcion}</p>
+    <button  class="btn btn-dark" id="btn${clase.id}">AGREGAR PACK AL CARRITO</button>
+    </div>
+    </div>`
+    ContenedorClases.appendChild(div);
+    const btnCarrito = document.getElementById(`btn${clase.id}`)
+  
+    btnCarrito.addEventListener('click', () => {
+        AgregarAlCarrito(clase.id);
+    })
+  });
+
+//uso operador avanzado
+  btnRecordarme.checked ? guardarDatosUsuario('localStorage') : guardarDatosUsuario('sessionStorage')
+ /*  if (btnRecordarme.checked) {
       guardarDatosUsuario('localStorage')
   }
   else {
       guardarDatosUsuario('sessionStorage')
-  }
+  } */
 })
 
 
@@ -141,26 +164,12 @@ btnBorrarDatos.addEventListener('click', () => {
 
 //////FUNCIONES CARRITO
 
-clases.forEach(clase => {
-  const div = document.createElement('div')
-  div.innerHTML = `<div class="card card-clases" style="width: 18rem;">
-  <img ${clase.img} class="card-img-top img-card" alt="...">
-  <div class="card-body">
-  <h4 class="card-title"> ${clase.disciplina}</h4>
-  <h4 > ${clase.profe}</h4>
-  <h5 class="card-subtitle mb-2 text-muted">  ${clase.horario}</h5>
-  <h6 class="card-title"> PACK MES $${clase.precio}</h6>
-  <p class="card-text">${clase.descripcion}</p>
-  <button  class="btn btn-dark" id="btn${clase.id}">AGREGAR PACK AL CARRITO</button>
-  </div>
-  </div>`
-  ContenedorClases.appendChild(div);
-  const btnCarrito = document.getElementById(`btn${clase.id}`)
 
-  btnCarrito.addEventListener('click', () => {
-      AgregarAlCarrito(clase.id);
-  })
-});
+ 
+
+
+
+
 
 const AgregarAlCarrito = (claseId) => {
   const encontrar = clases.find((clase) => clase.id === claseId)
